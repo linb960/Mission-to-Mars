@@ -22,7 +22,7 @@
             <div class="media-body">
               <h2>Latest Mars News</h2>
               <h4 class="media-heading">{{ mars.news_title }}</h4>
-              <p>{{ mars.news_paragraph }}</p>
+              <div class="well well-sm">{{ mars.news_paragraph }}</div>
             </div>
           </div>
         </div>
@@ -45,6 +45,31 @@
           </div>
         </div>
       </div>
+      <!-- Section for Mars Hemispheres thumbnails-->
+
+      <!-- Section for Mars Hemispheres-->
+      <div class="row" id="mars-hemispheres">
+          <div class="media">
+           <div class="media-body">
+              <h2>Mars Hemispheres</h2> 
+              
+                <ul>
+                  {% for hemisphere in mars.hemispheres %}
+                  <li>
+                    <div class="col-md-6">
+                      <img
+                      src="{{hemisphere.img_url}}"
+                      class="img-responsive"
+                        alt="Responsive image"
+                      />
+                      <div class="well well-sm">{{ hemisphere.title }}</div>
+                    </div>
+                    </li>
+                    {%endfor%}
+                  </ul>
+              </div>
+              </div>
+          </div>
     </div>
   </body>
 </html>
