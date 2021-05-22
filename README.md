@@ -10,7 +10,7 @@ The work of scraping the various websites is done in scraping.py and the index.h
 
 The full scale images collected specifically for this project are displayed at the bottom of the page and the rest of the page comes from the work done in Module 10.<br>
 
-Deliverable 3 asked for two additional Bootstrap features on the page.
+Deliverable 3 asked for two additional Bootstrap features in addition to making sure the page is responsive, which it is.  The other two items completed are as follows:
 1. The button is styled
 ```
  <!-- Add a button to activate scraping script -->
@@ -54,4 +54,4 @@ Deliverable 3 asked for two additional Bootstrap features on the page.
 ```
 ## Issues:
 - Sometimes when the data is scraped the webpage shows none in the news and or the table of facts.  This happens because if there is an error in exception caught in the try block it returns none.
-- The page is responsive on small displays except for the table of thumbnails.  I used the "table-responsive" class for the div but the table does not collapse into a vertical column.   More work can go into this but for now I'm happy to have acheived getting the thumbnails on the page.
+- The page is responsive on small displays.  Because I used the "table-responsive" class for the div there is no scroll bar to see the thumbnails off to the right but they are scrollable.
