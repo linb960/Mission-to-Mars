@@ -13,7 +13,7 @@
       <div class="jumbotron text-center">
         <h1>Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        <p><a style="border-width: 1; border: solid; text-align: center; color:rgb(0, 2, 128);" class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
       <!-- Add section for Mars News -->
       <div class="row" id="mars-news">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <!-- Section for Featured Image and Facts table -->
+      <!-- Section for Featured Image and Facts table --> 
       <div class="row" id="mars-featured-image">
         <div class="col-md-8">
           <h2>Featured Mars Image</h2>
@@ -46,15 +46,28 @@
         </div>
       </div>
       <!-- Section for Mars Hemispheres thumbnails-->
-
+      <div class="table-responsive" id="mars-hemispheres-thumbs">
+        <h2>Mars Hemispheres Thumbnails</h2> 
+          <table class="table">
+            <tr>
+                {% for hemisphere in mars.hemispheres %}
+                <td>
+                  <figure class="figure">
+                    <img src="{{hemisphere.thumb}}" class="figure-img img-fluid rounded" alt="Mars Hemispheres">
+                     <figcaption class="figure-caption">{{hemisphere.title}}</figcaption>
+                   </figure>
+                 </td>
+                {%endfor%}
+            </tr>
+          </table>
+      </div>
       <!-- Section for Mars Hemispheres-->
       <div class="row" id="mars-hemispheres">
-          <div class="media">
-           <div class="media-body">
-              <h2>Mars Hemispheres</h2> 
-              
-                <ul>
-                  {% for hemisphere in mars.hemispheres %}
+        <div class="media">
+          <div class="media-body">
+            <h2>Mars Hemispheres</h2> 
+              <ul style="list-style: none;">
+                {% for hemisphere in mars.hemispheres %}
                   <li>
                     <div class="col-md-6">
                       <img
@@ -64,12 +77,12 @@
                       />
                       <div class="well well-sm">{{ hemisphere.title }}</div>
                     </div>
-                    </li>
-                    {%endfor%}
-                  </ul>
-              </div>
-              </div>
+                  </li>
+                {%endfor%}
+              </ul>
           </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

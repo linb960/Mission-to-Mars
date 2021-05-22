@@ -117,25 +117,45 @@ def hemisphere_images(browser):
     for i in range(total_pics):
         # Create an empty dict
         hemispheres = {}
+
+        try: 
+            # Get the thumbnail image link
+            thumb_link = hemisphere_soup.select("div.item img")[i].get('src')
+        except AttributeError:
+            return None
         
-        # Get the link to the image page
-        image_link = hemisphere_soup.select("div.description a")[i].get('href')
-        browser.visit(f'{url}{image_link}')
+        thumb_link = url + thumb_link
+
+        try:
+            # Get the link to the image page
+            image_link = hemisphere_soup.select("div.description a")[i].get('href')
+            browser.visit(f'{url}{image_link}')
+        except AttributeError:
+            return None
 
         #Parse the new html page with soup
         html = browser.html
         image_soup = soup(html, 'html.parser')
         
-        # Get the full image link
-        img_url = image_soup.select_one("div.downloads ul li a").get('href')
-        img_url = url + img_url
+        try:
+            # Get the full image link
+            img_url = image_soup.select_one("div.downloads ul li a").get('href')
+            img_url = url + img_url
+        except AttributeError:
+            return None
         
-        # Get the full image title
-        img_title = image_soup.select_one("h2.title").get_text()
+        try:
+            # Get the full image title
+            img_title = image_soup.select_one("h2.title").get_text()
+        except AttributeError:
+            return None
+
+        
         # Add extracts to the results dict
         hemispheres = {
             'img_url': img_url,
-            'title': img_title}
+            'title': img_title,
+            'thumb': thumb_link}
 
         # Append results dict to hemisphere image urls list
         hemisphere_image_urls.append(hemispheres)
